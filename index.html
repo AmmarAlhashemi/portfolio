@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ammar Alhashemi | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --aqua: #00fff2;
+            --aqua-glow: rgba(0, 255, 255, 0.4);
+            --bg-dark: #050810;
+        }
+
+        html { scroll-behavior: smooth; }
+        body {
+            background-color: var(--bg-dark);
+            background: linear-gradient(180deg,rgb(0, 65, 65) 0%, rgba(5, 8, 16, 1) 40%);
+            color: white;
+            font-family: 'Cairo', sans-serif;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        /* Navigation Header */
+        header {
+            width: 100%; padding: 20px 50px;
+            display: flex; justify-content: space-between; align-items: center;
+            position: fixed; top: 0; left: 0; z-index: 1000;
+            backdrop-filter: blur(15px); box-sizing: border-box;
+        }
+
+        .profile-brand { display: flex; align-items: center; gap: 15px; }
+        .profile-brand img { width: 45px; height: 45px; border-radius: 50%; border: 1px solid var(--aqua); box-shadow: 0 0 15px var(--aqua-glow); }
+        .profile-brand span { font-weight: 700; font-size: 1.2rem; letter-spacing: 1px; }
+
+        .contact-btn-nav {
+            background: var(--aqua); color: black; padding: 10px 25px;
+            border-radius: 12px; text-decoration: none; font-weight: 800;
+            transition: 0.3s; box-shadow: 0 0 10px var(--aqua-glow);
+        }
+        .contact-btn-nav:hover { transform: scale(1.05); box-shadow: 0 0 20px var(--aqua); }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; text-align: center;
+            padding-top: 50px;
+        }
+
+        /* --- شارة متاح للعمل الإبداعية (Glass & Pulse) --- */
+        .status-badge {
+            background: rgba(0, 255, 255, 0.05);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            padding: 0px 12px;
+            border-radius: 50px;
+            color: var(--aqua);
+            font-size: 1rem;
+            font-weight: 700;
+            color: #cbd5e1;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 25px;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(5px);
+        }
+
+        /* تأثير الوميض (Shimmer) الذي يمر فوق النص */
+        .status-badge::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.2),
+                transparent
+            );
+            transition: 6s;
+            animation: shimmer 5s infinite;
+        }
+
+        /* النقطة المضيئة بتأثير رادار */
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--aqua);
+            border-radius: 50%;
+            position: relative;
+            box-shadow: 0 0 10px var(--aqua);
+        }
+
+        .status-dot::after {
+            content: "";
+            position: absolute;
+            top: -2px; left: -2px; right: -2px; bottom: -2px;
+            border: 1px solid var(--aqua);
+            border-radius: 50%;
+            animation: radar-pulse 2s infinite;
+        }
+
+        /* --- الأنيميشن الخاص بالتأثيرات --- */
+
+        /* مرور الوميض */
+        @keyframes shimmer {
+            0% { left: -100%; }
+            50%, 100% { left: 100%; }
+        }
+
+        /* تأثير الرادار حول النقطة */
+        @keyframes radar-pulse {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(3); opacity: 0; }
+        }
+
+        /* تأثير الاسم الكبير */
+        .hero h1 {
+            font-size: clamp(4rem, 15vw, 8rem);
+            font-weight: 900; margin: 0; line-height: 0.85;
+            background: linear-gradient(90deg, #fff, var(--aqua), #fff);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shine 5s linear infinite;
+            padding-top: 50px;
+        }
+
+        @keyframes shine { to { background-position: 200% center; } }
+
+        .job-title {
+            font-family: 'Fira Code', monospace; font-size: 1.8rem;
+            margin: 40px 0; color: #cbd5e1;
+        }
+        .job-desc {
+            font-family: 'Fira Code', monospace; font-size: 1rem;
+            margin: 40px 0; color: #cbd5e1;
+            margin-top: 0px;
+        }
+        .aqua-symbol { color: var(--aqua); text-shadow: 0 0 15px var(--aqua); font-weight: bold; }
+        .aqua-word { color: var(--aqua); text-shadow: 0 0 15px var(--aqua); font-weight: bold; }
+
+        /* Containers & Cards */
+        .container { max-width: 1000px; margin: 0 auto; padding: 60px 20px; }
+        h2 { font-size: 2.2rem; color: var(--aqua); margin-bottom: 25px; display: flex; align-items: center; gap: 15px; }
+        
+        .glass-card {
+            background: rgba(0, 255, 255, 0.05);
+            border: 1px solid var(--aqua);
+            padding: 40px; border-radius: 28px;
+            backdrop-filter: blur(12px); margin-bottom: 40px;
+            transition: 0.4s;
+        }
+
+        .list-item { border-left: 2px solid var(--aqua); padding-left: 25px; margin-bottom: 30px; position: relative; }
+        .list-item::before { content: ''; position: absolute; left: -9px; top: 0; width: 16px; height: 16px; background: var(--aqua); border-radius: 50%; box-shadow: 0 0 10px var(--aqua); }
+        .list-item h3 { margin: 0; font-size: 1.4rem; color: #fff; }
+        .list-item span { color: var(--aqua); font-size: 1rem; }
+
+        .skills-grid { display: flex; flex-wrap: wrap; gap: 12px; }
+        .skill-tag { background: rgba(0, 255, 255, 0.05); border: 1px solid rgba(0, 255, 255, 0.1); padding: 10px 20px; border-radius: 12px; font-size: 1rem; transition: 0.3s; }
+
+        .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+        .contact-item {
+            display: flex; flex-direction: column; align-items: center; padding: 25px;
+            background: rgba(255, 255, 255, 0.03); border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.05);
+            text-decoration: none; color: white; transition: 0.3s;
+        }
+        .contact-item:hover { transform: translateY(-8px); border-color: var(--aqua); background: rgba(0, 255, 255, 0.05); }
+        .contact-item i { font-size: 2rem; color: var(--aqua); margin-bottom: 15px; }
+        .contact-item b { font-size: 1.1rem; margin-bottom: 5px; }
+        .contact-item span { color: #888; font-size: 0.9rem; }
+
+        @media (max-width: 768px) { .hero h1 { font-size: 4.5rem; } header { padding: 15px 20px; } }
+
+        /* --- تخصيص السكرول بار (Custom Scrollbar) --- */
+
+        /* 1. عرض السكرول بار */
+        ::-webkit-scrollbar {
+            width: 8px; /* جعله نحيفاً وأنيقاً */
+        }
+
+        /* 2. خلفية المسار (الخلفية التي يتحرك عليها السكرول) */
+        ::-webkit-scrollbar-track {
+            background: var(--bg-dark); /* جعلها بنفس لون خلفية الموقع لتبدو مخفية */
+        }
+
+        /* 3. المقبض (الجزء الذي يتحرك) */
+        ::-webkit-scrollbar-thumb {
+            background: rgba(0, 255, 255, 0.2); /* لون Aqua شفاف */
+            border-radius: 10px; /* زوايا مستديرة */
+            border: 1px solid rgba(0, 255, 255, 0.1); /* إطار خفيف جداً */
+            transition: 0.3s;
+        }
+
+        /* 4. شكل المقبض عند التمرير أو وضع الماوس عليه */
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--aqua); /* يصبح اللون Aqua صريحاً */
+            box-shadow: 0 0 10px var(--aqua-glow); /* إضافة تأثير التوهج */
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="profile-brand">
+            <img src="images/Ammar.jpg" alt="Ammar">
+            <span>Ammar</span>
+        </div>
+        <a href="#contact" class="contact-btn-nav">Contact Me</a>
+    </header>
+
+    <main class="hero">
+        <div class="status-badge" data-aos="fade-down" data-aos-delay="200">
+            <div class="status-dot"></div>
+            &nbsp;Available for work&nbsp;
+        </div>
+        
+        <h1 data-aos="zoom-out">Ammar Alhashemi</h1>
+        
+        <div class="job-title" data-aos="zoom-out">
+            <span class="aqua-symbol">&lt;/&gt;</span> Software Engineer <span class="aqua-symbol">&gt;_</span>
+        </div>
+        <div class="job-desc" data-aos="zoom-out">
+            Crafting elegant solutions through code.Passionate about building</br>
+                      <span class="aqua-word">innovatice</span> software that makes a difference.
+        </div>
+    </main>
+
+    <div class="container">
+        <section id="bio" data-aos="fade-up">
+            <h2><i class="fas fa-fingerprint"></i> Biography</h2>
+            <div class="glass-card">
+                <p style="font-size: 1.2rem; color: #cbd5e1; line-height: 1.8;">
+                    I am a results-driven Software Engineer with a passion for developing innovative digital solutions. I specialize in building scalable applications with a focus on clean architecture and exceptional user experiences.
+                </p>
+            </div>
+        </section>
+
+        <section id="education" data-aos="fade-up">
+            <h2><i class="fas fa-graduation-cap"></i> Education</h2>
+            <div class="glass-card">
+                <div class="list-item">
+                    <h3>Bachelor of Information Technology</h3>
+                    <span>Alsaeeda University | 2021 - 2025</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" data-aos="fade-up">
+            <h2><i class="fas fa-laptop-code"></i> Experience</h2>
+            <div class="glass-card">
+                <div class="list-item">
+                    <h3>Senior Software Engineer</h3>
+                    <span>Tech Company | 2024 </span>
+                    <p style="color: #94a3b8;">Leading a team to build high-performance web systems.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" data-aos="fade-up">
+            <h2><i class="fas fa-bolt"></i> Core Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-tag">JavaScript / TypeScript</div>
+                <div class="skill-tag">Python</div>
+                <div class="skill-tag">React & Next.js</div>
+                <div class="skill-tag">Node.js</div>
+                <div class="skill-tag">SQL & NoSQL</div>
+                <div class="skill-tag">Cloud (AWS/Azure)</div>
+            </div>
+        </section>
+
+        <section id="contact" data-aos="fade-up">
+            <h2><i class="fas fa-envelope-open-text"></i> Contact Information</h2>
+            <div class="glass-card">
+                <div class="contact-grid">
+                    <a href="mailto:ammarahmedalhashemi@gmail.com" class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <b>Email Me</b>
+                        <span>ammarahmedalhashemi@gmail.com</span>
+                    </a>
+                    <a href="https://twa.me/967733000344" class="contact-item">
+                        <i class="fab fa-whatsapp"></i>
+                        <b>WhatsApp</b>
+                        <span>+967 733 000 344</span>
+                    </a>
+                    <a href="https://t.me/p_asa" class="contact-item">
+                        <i class="fab fa-telegram-plane"></i>
+                        <b>Telegram</b>
+                        <span>@P_ASA</span>
+                    </a>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1200, once: false });
+    </script>
+</body>
+</html>
